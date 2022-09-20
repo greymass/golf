@@ -12,7 +12,7 @@ async function main() {
     const contract = await sdk.getContract('rewards.gm')
 
     // Work with table data
-    const usersTable = await contract.getTable('users')
+    const usersTable = contract.getTable('users')
     const row = await usersTable.getByPrimary('teamgreymass')
     const amount = row.getColumn('amount')
 
