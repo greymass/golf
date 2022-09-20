@@ -17,12 +17,12 @@ async function main() {
     const amount = row.getColumn('amount')
 
     // This could have a strongly typed interface as well
-    class MyRow extends Struct {
-        @Struct.field('uint64') declare amount: UInt64
-    }
-    const usersTable = await contract.getTable('users', MyRow)
-    const row = await usersTable.getByPrimary('teamgreymass')
-    const amount = row.amount
+    // class MyRow extends Struct {
+    //     @Struct.field('uint64') declare amount: UInt64
+    // }
+    // const usersTable = await contract.getTable('users', MyRow)
+    // const row = await usersTable.getByPrimary('teamgreymass')
+    // const amount = row.amount
 
     // Creates a claim action
     const action = contract.action(
