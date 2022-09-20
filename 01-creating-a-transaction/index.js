@@ -31,8 +31,8 @@ async function main() {
             account: 'teamgreymass',
             amount,
         },
-        { authority: [session.auth] }
-    ) // can be optional, set to to placeholder if omitted
+        { authority: [session.auth] } // can be optional, set to to placeholder if omitted
+    )
 
     // Transact
     await session.transact(action)
