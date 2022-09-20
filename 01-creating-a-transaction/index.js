@@ -13,8 +13,8 @@ async function main() {
 
     // Work with table data
     const usersTable = contract.getTable('users')
-    const row = await usersTable.getByPrimary('teamgreymass')
-    const amount = row.getColumn('amount')
+    const rows = await usersTable.getByPrimary('teamgreymass')
+    const amount = rows[0].getColumn('amount')
 
     // This could have a strongly typed interface as well
     // class MyRow extends Struct {
