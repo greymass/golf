@@ -9,7 +9,9 @@ async function main() {
     await account.loadData()
 
     // Load account resources
-    const { cpu, net, ram } = await account.getResources()
+    const cpu: Int64 = account.resources.cpu
+    const net: Int64 = account.resources.net
+    const ram: UInt64 = account.resources.ram
 
     // Load account permissions
     const permissions = await account.getPermissions()
