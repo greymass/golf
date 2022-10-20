@@ -16,6 +16,24 @@ async function main() {
 
     // Access an account permission
     const active: AccountPermission = account.permissions.active
+
+    /*
+
+    // Internal Data Structure
+    const account: Account = new Account({
+        // Data Fields
+        account: Name,
+        chain: ChainType,
+        // Modules
+        api: APIProvider,
+        balances: BalanceProvider,
+        resources: ResourceProvider,
+        permissions: PermissionProvider,
+        // Methods
+        loadData = async () => { },
+    })
+
+    */
 }
 
 main()
