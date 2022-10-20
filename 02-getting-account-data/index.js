@@ -1,5 +1,6 @@
 // SDK exposes all you need
-import { Account } from 'NEWSDKNAME'
+import { Asset, Chains, Int64, UInt64 } from '@[SOMETHING]kit'
+import { Account } from '@[SOMETHING]kit/account'
 
 async function main() {
     // Loads account representation (optional 2nd parameter for chain, could use a default if not specified)
