@@ -9,6 +9,9 @@ async function main() {
     // Retrieves data from the APIs (v1/chain/get_account)
     await account.loadData()
 
+    // Or do the above two steps in one step (instantiates object + calls load data)
+    const account: Account = Account.load('teamgreymass', Chains.EOS)
+
     // Load account resources
     const cpu: Int64 = account.resources.cpu
     const net: Int64 = account.resources.net
