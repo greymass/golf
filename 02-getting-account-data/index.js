@@ -2,9 +2,11 @@
 import { Account } from 'NEWSDKNAME'
 
 async function main() {
-    // Loads account
-    const account = await Account.get("teamgreymass")
+    // Loads account representation (optional 2nd parameter for chain, could use a default if not specified)
+    const account: Account = Account.from('teamgreymass', Chains.EOS)
 
+    // Retrieves data from the APIs (v1/chain/get_account)
+    await account.loadData()
 
     // Load account resources
     const { cpu, net, ram } = await account.getResources()
