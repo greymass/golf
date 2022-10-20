@@ -13,8 +13,8 @@ async function main() {
     const net: Int64 = account.resources.net
     const ram: UInt64 = account.resources.ram
 
-    // Load account permissions
-    const permissions = await account.getPermissions()
+    // Access an account permission
+    const active: AccountPermission = account.permissions.active
 }
 
 main()
