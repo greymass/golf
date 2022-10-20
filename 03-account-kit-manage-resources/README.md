@@ -1,6 +1,6 @@
-# 03 - The Account Kit - Resource Management
+# 03 - The Account Kit - Permission Management
 
-The goal of this round is to give developers easy access to manage an accounts network resources.
+The goal of this round is to give developers easy access to manage an accounts permissions.
 
 The developer will need to:
 
