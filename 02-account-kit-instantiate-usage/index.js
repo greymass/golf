@@ -10,7 +10,7 @@ async function main() {
     await account.loadData()
 
     // Or do the above two steps in one step (instantiates object + calls load data)
-    const account: Account = Account.load('teamgreymass', Chains.EOS)
+    const account: Account = await Account.load('teamgreymass', Chains.EOS)
 
     // Load account resources
     const cpu: Int64 = account.resources.cpu
