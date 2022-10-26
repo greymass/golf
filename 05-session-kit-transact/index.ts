@@ -9,12 +9,16 @@ import {
 
 // Instantiate a session to a blockchain account
 const session = new Session({
+    // Pass information about the blockchain and how to connect to it.
     chain: {
         id: '2a02a0053e5a8cf73a56ba0fda11e4d92e0238a4a2aa74fccf46d5a910746840',
         url: 'https://jungle3.greymass.com',
     },
-    // client, // Optionally pass client for nodejs context
+    // Optionally pass APIClient to override the one automatically created.
+    // client,
+    // Pass the permission to use for this session.
     permissionLevel: 'someone@active',
+    // Pass a Wallet Plugin that this session will interact with.
     walletPlugin: new WalletPluginPrivateKey({
         privateKey: '5JnUd2V5nYmRKgK9K2fRQcs3qKoi4mbcGV8Dg8EFqjjqEp9tYP5',
     }),
@@ -54,5 +58,5 @@ const action = Action.from({
 // --- END OF BOILERPLATE ---
 // --------------------------
 
-// Perform a transaction
+// Perform a transaction based on the actions provided
 const result = await session.transact({ action })
