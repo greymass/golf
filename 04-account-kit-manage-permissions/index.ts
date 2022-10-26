@@ -3,7 +3,6 @@ import { Chains, PublicKey, Permission } from '@[SOMETHING]kit'
 import { Account } from '@[SOMETHING]kit/account'
 import { Session } from '@[SOMETHING]kit/session'
 
-
 async function main() {
     const session = Session.login();
     const account: Account = await session.getAccount();
@@ -24,42 +23,44 @@ async function main() {
 
     // Add a new permission
     await account.addPermission({
-        session, // optional, if not defined the active session which is globally stored will be used
         permission: Permission.from({
             permission: 'active',
             parent: 'owner',
-            waits: [{ wait_sec: 10, weight: 1 }],
-            keys: [PublicKey.from('PUB_K1_5rcqJ8eNgNXooYyz9PTX2a2zZBktWaWezhXYGN2hrXWqfHSWYY')]
+            waits: [{wait_sec: 10, weight: 1}],
+            keys: ['PUB_K1_5rcqJ8eNgNXooYyz9PTX2a2zZBktWaWezhXYGN2hrXWqfHSWYY']
         }),
+    },
+    {
+        session, // optional, if not defined the active session which is globally stored will be used
     });
 
     // Update a permission
-    await permission.update(Permission.from({
+    await account.updatePermission(Permission.from({
         session, // optional, if not defined the active session which is globally stored will be used
         permission: 'owner',
-        keys: [PublicKey.from('PUB_K1_5rcqJ8eNgNXooYyz9PTX2a2zZBktWaWezhXYGN2hrXWqfHSWYY')]
+        keys: ['PUB_K1_5rcqJ8eNgNXooYyz9PTX2a2zZBktWaWezhXYGN2hrXWqfHSWYY']
     }));
 
     // Remove a permission
-    await permission.remove()
+    await account.removePermission('owner')
 
     // Add a key to a permission
-    await permission.addKey({ key: PublicKey.from('PUB_K1_5rcqJ8eNgNXooYyz9PTX2a2zZBktWaWezhXYGN2hrXWqfHSWYY'), weight: 1 })
+    await account.addPermissionKey('active', { key: 'PUB_K1_5rcqJ8eNgNXooYyz9PTX2a2zZBktWaWezhXYGN2hrXWqfHSWYY', weight: 1 })
 
     // Remove a key from a permission
-    await permission.removeKey(PublicKey.from('PUB_K1_5rcqJ8eNgNXooYyz9PTX2a2zZBktWaWezhXYGN2hrXWqfHSWYY'))
+    await account.removePermissionKey('active', 'PUB_K1_5rcqJ8eNgNXooYyz9PTX2a2zZBktWaWezhXYGN2hrXWqfHSWYY')
 
     // Add an account to a permission
-    await permission.addAccount(Account.from('teamgreymass'))
+    await account.addPermissionAccount('teamgreymass')
 
     // Remove an account from a permission
-    await permission.removeAccount(Account.from('teamgreymass'))
+    await account.removePermissionAccount('teamgreymass')
 
     // Add a wait to a permission
-    await permission.addWait({ wait_sec: 10, weight: 1 })
+    await account.addPermissionWait('active', { wait_sec: 10, weight: 1 })
 
     // Remove a wait from a permission
-    await permission.removeWait({ wait_sec: 10, weight: 1 })
+    await account.removeWait('active')
 }
 
 main()
