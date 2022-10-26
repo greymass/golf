@@ -15,7 +15,7 @@ const session = new Session({
         url: 'https://jungle3.greymass.com',
     },
     // Optionally pass APIClient to override the one automatically created.
-    // client,
+    // client: new APIClient({url: 'https://jungle3.greymass.com'}),
     // Pass the permission to use for this session.
     permissionLevel: 'someone@active',
     // Pass a Wallet Plugin that this session will interact with.
