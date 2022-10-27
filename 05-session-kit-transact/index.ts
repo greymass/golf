@@ -60,7 +60,6 @@ const action = Action.from({
 
 /*
     Payload accepted by the [[Session.transact]] method.
-    Note that one of `action`, `actions` or `transaction` must be set.
 
     export interface TransactArgs {
         transaction?: AnyTransaction
