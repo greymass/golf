@@ -58,5 +58,21 @@ const action = Action.from({
 // --- END OF BOILERPLATE ---
 // --------------------------
 
+/*
+    Payload accepted by the [[Session.transact]] method.
+    Note that one of `action`, `actions` or `transaction` must be set.
+
+    export interface TransactArgs {
+        transaction?: AnyTransaction
+        action?: AnyAction
+        actions?: AnyAction[]
+        request?: SigningRequest | string
+    }
+
+    This allows accepting of core object typed as Action, Action[], or Transaction.
+    It also accepts a plain JSON representation of these, as well as a full transaction (which contains `actions`).
+    Finally, a SigningRequest object or string can be passed as `request`.
+*/
+
 // Perform a transaction based on the actions provided
 const result = await session.transact({ action })
