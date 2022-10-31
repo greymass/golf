@@ -19,5 +19,5 @@ The implementation examples that exist within this round are:
     -   API Requests: 2 (get_info, push_transaction)
 -   eosjs.js - Uses `eosjs`
     -   API Requests: 5 (get_info, get_abi, get_block/get_block_header_state, get_required_keys, push_transaction)
--   (INCOMPLETE) session-kit.js - Uses the Session Kit from the new SDKs
+-   session-kit.js - Potential use of the Session Kit from the new SDKs
     -   API Requests: ??
