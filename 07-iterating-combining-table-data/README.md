@@ -24,9 +24,8 @@ while (more) {
         more = false
     }
     count += response.rows.length
-    holders = holders.concat(
-        response.rows.map((r) => Name.from(r.scope))
-    )
+    holders = holders.concat(response.rows.map((r) => Name.from(r.scope)))
+}
 ```
 
 Source: [obe-indexer](https://github.com/telosnetwork/obe-indexer/blob/062a4b3e69a9a0ab51b21dcedf8013fdcc41b326/src/indexer/jobs/TokenPoller.ts#L76-L97)
