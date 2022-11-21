@@ -1,11 +1,4 @@
-import {
-    Action,
-    Asset,
-    Name,
-    Session,
-    Struct,
-    WalletPluginPrivateKey,
-} from '@[SOMETHING]kit/session'
+import { Session, WalletPluginPrivateKey } from '@wharfkit/session'
 
 // Instantiate a session to a blockchain account
 const session = new Session({
@@ -24,40 +17,6 @@ const session = new Session({
     }),
 })
 
-// -----------------------------------------------------------------
-// --- BOILERPLATE TO SETUP TRANSACTION, NOT PART OF SESSION KIT ---
-// -----------------------------------------------------------------
-
-// Setup core struct for the action to be performed, to avoid get_abi call
-@Struct.type('transfer')
-class Transfer extends Struct {
-    @Struct.field('name') from!: Name
-    @Struct.field('name') to!: Name
-    @Struct.field('asset') quantity!: Asset
-    @Struct.field('string') memo!: string
-}
-
-// Assemble action with action data and metadata
-const action = Action.from({
-    authorization: [
-        {
-            actor: 'wharfkit',
-            permission: 'active',
-        },
-    ],
-    account: 'eosio.token',
-    name: 'transfer',
-    data: Transfer.from({
-        from: 'someone',
-        to: 'teamgreymass',
-        quantity: '0.1337 EOS',
-        memo: 'this is the best! <3',
-    }),
-})
-// --------------------------
-// --- END OF BOILERPLATE ---
-// --------------------------
-
 /*
     Payload accepted by the [[Session.transact]] method.
 
@@ -73,5 +32,22 @@ const action = Action.from({
     Finally, a SigningRequest object or string can be passed as `request`.
 */
 
-// Perform a transaction based on the actions provided
-const result = await session.transact({ action })
+// Perform a transaction
+const result = await session.transact({
+    action: {
+        authorization: [
+            {
+                actor: 'someone',
+                permission: 'active',
+            },
+        ],
+        account: 'eosio.token',
+        name: 'transfer',
+        data: {
+            from: 'someone',
+            to: 'teamgreymass',
+            quantity: '0.1337 EOS',
+            memo: 'this is the best! <3',
+        },
+    },
+})
